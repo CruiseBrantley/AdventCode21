@@ -12,17 +12,18 @@ function mostCommonElement(array) {
 
 function partOne(data) {
     const lengthArr = new Array(data.length).fill(new Array())
-    data.forEach((line, index) => {
-        // console.log(charArr)
-        charArr.forEach((char, charIndex) => {
-            lengthArr[index][charIndex] = charArr[charIndex][index]
-        })
-        for(let i = 0; i < charArr.length; i++) {
-            lengthArr[i][index] = charArr[i]
+    for(let i = 0; i < data[0].length; i++) {
+        
+        for(let j = 0; j < data.length; j++) {
+            console.log(j, i, data[j][i])
+            lengthArr[i][j] = data[j][i]
         }
-    }) // create array length wise from strings
+        // for(let i = 0; i < charArr.length; i++) {
+        //     lengthArr[i][index] = charArr[i]
+        // }
+    } // create array length wise from strings
     console.log(lengthArr)
-    const mostCommonArr = lengthArr.map(line => mostCommonElement(line))
+    // const mostCommonArr = lengthArr.map(line => mostCommonElement(line))
     // console.log(mostCommonArr)
 }
 
