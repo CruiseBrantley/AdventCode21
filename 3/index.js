@@ -4,27 +4,22 @@ const splitArray = input.split(splitRegex)
 const charArray = splitArray.map(line => [...line])
 
 function mostCommonElement(array) {
-    // console.log('line:', array)
     const obj = {}
     array.forEach(element => obj[element] = obj[element] ? obj[element] + 1 : 1)
-    // console.log(obj)
+    return obj['0'] > obj['1'] ? '0' : '1'
 }
 
 function partOne(data) {
-    const lengthArr = new Array(data.length).fill(new Array())
+    const lengthArr = Array.from(new Array(data[0].length), () => [])
     for(let i = 0; i < data[0].length; i++) {
-        
         for(let j = 0; j < data.length; j++) {
-            console.log(j, i, data[j][i])
             lengthArr[i][j] = data[j][i]
         }
-        // for(let i = 0; i < charArr.length; i++) {
-        //     lengthArr[i][index] = charArr[i]
-        // }
     } // create array length wise from strings
-    console.log(lengthArr)
-    // const mostCommonArr = lengthArr.map(line => mostCommonElement(line))
-    // console.log(mostCommonArr)
+    const mostCommonArr = lengthArr.map(line => mostCommonElement(line))
+    const gamma = parseInt(mostCommonArr.join(''), 2)
+    const epsilon = parseInt(mostCommonArr.map(element => element === '1' ? '0' : '1').join(''), 2)
+    return gamma * epsilon
 }
 
 function partTwo(data) {
